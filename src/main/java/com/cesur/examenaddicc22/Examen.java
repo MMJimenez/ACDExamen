@@ -1,5 +1,15 @@
 package com.cesur.examenaddicc22;
 
+import models.Ejemplar;
+import models.Libro;
+import models.Usuario;
+import org.hibernate.HibernateException;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author AQUI VUESTROS DATOS
@@ -34,7 +44,6 @@ public class Examen {
         
         Ejercicio3.solucion();
 
-        
     }
     
 }

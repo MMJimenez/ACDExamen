@@ -5,9 +5,12 @@
     <session-factory>
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <property name="connection.url">jdbc:mysql://localhost:3306/examen?zeroDateTimeBehavior=CONVERT_TO_NULL</property>
-        <property name="connection.username">root</property>
-        <property name="connection.password"></property>
+        <property name="connection.username">newuser</property>
+        <property name="connection.password">newuser</property>
         <property name="hibernate.show_sql">true</property>
 
+        <mapping class="models.Usuario"/>
+        <mapping class="models.Libro"/>
+        <mapping class="models.Ejemplar"/>
     </session-factory>
 </hibernate-configuration>

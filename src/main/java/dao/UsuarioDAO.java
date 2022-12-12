@@ -64,6 +64,7 @@ public class UsuarioDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        close();
     }
 
     public ArrayList<Usuario> list(){
@@ -88,7 +89,7 @@ public class UsuarioDAO {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-
+        close();
         return salida;
     }    
     
@@ -119,7 +120,7 @@ public class UsuarioDAO {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-
+        close();
         return null;
     }    
 }

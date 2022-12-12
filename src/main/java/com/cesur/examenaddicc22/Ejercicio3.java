@@ -1,6 +1,8 @@
 package com.cesur.examenaddicc22;
 
 import dao.BibliotecaDAO;
+
+import java.util.ArrayList;
 import java.util.HashSet;
 import models.Ejemplar;
 import models.Libro;
@@ -29,10 +31,15 @@ class Ejercicio3 {
         var ej1 = new Ejemplar("bueno",2018);
         var ej2 = new Ejemplar("mal",2019);
         var ej3 = new Ejemplar("excelente",2021);
-        
+//        ArrayList<Ejemplar> ejemplares = new ArrayList<>();
+//        ejemplares.add(ej1);
+//        ejemplares.add(ej2);
+//        ejemplares.add(ej3);
+
         Libro libro = new Libro();
         libro.setTitulo("Aprende Java en 24h");
         libro.setAutor("Rafael Montes");
+//        libro.setEjemplares(ejemplares);
         
         /* aqui faltaría asociar los ejemplares a este libro */
         

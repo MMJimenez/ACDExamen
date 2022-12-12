@@ -1,16 +1,29 @@
 package models;
 
+import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.io.Serializable;
 
 /**
  *
  * @author FranciscoRomeroGuill
  */
+
+@Entity
 public class Usuario implements Serializable {
 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "id", nullable = false)
     private Long id;
+    @Basic
+    @Column(name = "nombre", nullable = false)
     private String nombre;
+    @Basic
+    @Column(name = "apellidos", nullable = false)
     private String apellidos;
+    @Basic
+    @Column(name = "dni", nullable = false)
     private String dni;
 
     public Usuario() {

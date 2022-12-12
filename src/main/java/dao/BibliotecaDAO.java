@@ -1,8 +1,13 @@
 package dao;
 
-import java.util.HashSet;
+import java.util.*;
+
+import models.Ejemplar;
 import models.Libro;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 /**
  *
@@ -16,8 +21,7 @@ public class BibliotecaDAO {
         try{
 
             /* Completar conexión con hibernate */
-            
-            System.out.println("Conexión no realizada");
+            sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
         }catch(Exception ex){
             System.out.println("Error iniciando Hibernate");
             System.out.println(ex);
@@ -28,9 +32,12 @@ public class BibliotecaDAO {
     public void saveLibro( Libro e ){
         
         /* Guarda un libro con todos sus ejemplares en la base de datos */
-        
-        System.out.println("Método saveLibro no implementado");
-        
+        var session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        session.save(e);
+        transaction.commit();
+
+        session.close();
     }
   
     public HashSet<Libro> findByEstado(String estado){
@@ -39,10 +46,17 @@ public class BibliotecaDAO {
         /* 
          Devuelve el conjunto de libros que tenga el estado indicado      
         */
-        System.out.println("Método findByEstado no implementado");
-        
+        var session = sessionFactory.openSession();
+        Query query = session.createQuery("FROM Ejemplar WHERE estado LIKE :estado")
+                .setParameter("estado", estado);
+
+        List<Ejemplar> ejemplares = query.getResultList();
+
+        for (int i = 0; i < ejemplares.size(); i++) {
+            salida.add(ejemplares.get(i).getLibro());
+        }
+        session.close();
         return salida;
-        
     }
     
     public void printInfo(){
@@ -61,8 +75,18 @@ public class BibliotecaDAO {
           ...
         
         */
-        System.out.println("Método printInfo no implementado");
-        
+        var session = sessionFactory.openSession();
+        Query query = session.createQuery("FROM Libro");
+        List<Libro> libros = query.getResultList();
+
+        HashSet<Libro> conjuntoLibros = new HashSet<>(libros);
+        Iterator<Libro> iterator = conjuntoLibros.iterator();
+
+        while (iterator.hasNext()){
+            System.out.println(iterator.next().getTitulo() + " (" +
+                    iterator.next().getEjemplares().size() + ")");
+        }
+        session.close();
     }
     
 }

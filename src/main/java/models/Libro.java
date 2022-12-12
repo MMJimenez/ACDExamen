@@ -1,12 +1,27 @@
 package models;
 
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+@Entity
 
 public class Libro implements Serializable {
-    private Long id;
-    private String titulo;
-    private String autor;
 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "id", nullable = false)
+    private Long id;
+    @Basic
+    @Column(name = "titulo", nullable = false)
+    private String titulo;
+    @Basic
+    @Column(name = "autor", nullable = false)
+    private String autor;
+    @OneToMany(mappedBy = "libro", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Ejemplar> ejemplares;
     /*
     Completar con los métodos y atributos que sean necesarios
     */    
@@ -41,6 +56,14 @@ public class Libro implements Serializable {
 
     public void setAutor(String autor) {
         this.autor = autor;
+    }
+
+    public List<Ejemplar> getEjemplares() {
+        return ejemplares;
+    }
+
+    public void setEjemplares(List<Ejemplar> ejemplares) {
+        this.ejemplares = ejemplares;
     }
 
     @Override
