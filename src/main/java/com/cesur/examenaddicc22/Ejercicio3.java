@@ -32,7 +32,7 @@ class Ejercicio3 {
         
         Libro libro = new Libro();
         libro.setTitulo("Aprende Java en 24h");
-        libro.setTitulo("Rafael Montes");
+        libro.setAutor("Rafael Montes");
         
         /* aqui faltaría asociar los ejemplares a este libro */
         
