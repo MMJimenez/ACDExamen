@@ -8,8 +8,8 @@ public class Examen {
 
     /* Incluid aqui vuestros datos */
     
-    static final String AUTOR = "TU NOMBRE AQUI";
-    static final String DNI = "TI DNI AQUI";
+    static final String AUTOR = "Miguel Munoz Jimenez";
+    static final String DNI = "44653016B";
     
     public static void main(String[] args) {
         System.out.println("-------------------------------------------");
